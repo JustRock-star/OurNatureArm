@@ -5,27 +5,9 @@ const mainNav = document.querySelector('.main-nav');
 const topicModal = document.querySelector('#topic-modal');
 const topicCards = document.querySelectorAll('.issue-card');
 const topicContent = {
-	climate: {
-		number: '01 / ԿԼԻՄԱ',
-		title: 'Կլիմա և հնավայրեր',
-		description: 'Կլիմայական պայմանները ազդել են այնպիսի գործունեությունների վրա, ինչպիսիք են հողագործությունն ու բնակության տեղորոշումը։',
-		detail: 'Ինչպես ��ործել',
-		body: 'Կլիման ձևավորել է մարդկանց որոշումները՝ բնակություն ընտրելու, crops աճեցնելու և ջրային համակարգեր ստեղծելու առումով։'
-	},
-	forest: {
-		number: '02 / ԱՆՏԱՌՆԵՐ',
-		title: 'Ինչպես օգտագործել անտառները',
-		description: 'Անտառները էին տրամադրում վառելիք, շինանյութ և սնունդ՝ հատկապես փոքր համայնքներում։',
-		detail: 'Պահպանության օրինակներ',
-		body: 'Հայտնի է, որ տեղական բնակչություններն օգտագործել են անտառային ռեսուրսները, բայց երբեմն՝ ավելորդ հատումների պատճառով կարող էին փոխել տեղանքը։'
-	},
-	ocean: {
-		number: '03 / ՋՐԱՏԱՐԱԾՔՆԵՐ',
-		title: 'Ջուրն ու հնավայրերը',
-		description: 'Գետերը և լճերը հաճախ որոշում են, որտեղ են հիմք առնում settlements-ները։',
-		detail: 'Ջրի ճիշտ կառավարման քայլեր',
-		body: 'Ջրի մոտ գտնվող հնավայրերը ունեն հարուստ պատմական ապրելակարգ՝ մոտակա ջրի օգտագործմամբ։'
-	}
+	climate: { number: '01 / ԿԼԻՄԱ', title: 'Հովացնենք մոլորակը', description: 'Կլիմայի փոփոխության վրա ազդում են միլիոնավոր առօրյա որ[...]
+	forest: { number: '02 / ԱՆՏԱՌՆԵՐ', title: 'Պահպանենք անտառները', description: 'Անտառները պաշտպանում են կենսաբազմազանությունը, կո�[...]
+	ocean: { number: '03 / ՕՎԿԻԱՆՈՍՆԵՐ', title: 'Տեղ թողնենք օվկիանոսներին', description: 'Օվկիանոսը կարգավորում է կլիման և սնունդ տա[...]
 };
 
 function openTopic(topic) {
@@ -35,8 +17,8 @@ function openTopic(topic) {
 	document.querySelector('#topic-title').textContent = content.title;
 	document.querySelector('#topic-description').textContent = content.description;
 	document.querySelector('#topic-detail').innerHTML = `<strong>${content.detail}</strong><p>${content.body}</p>`;
-	document.querySelector('#topic-sections').innerHTML = `<h3>Ուշադրության կենտրոնում</h3><ul><li>Պատմական և բնապահպանական կապ</li><li>Պահպանման պարզ քայլեր</li></ul>`;
-	document.querySelector('#topic-image').style.backgroundImage = `url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80")`;
+	document.querySelector('#topic-sections').innerHTML = `<h3>Ուշադրության կենտրոնում</h3><ul>${content.facts.map(fact => `<li>${fact}</li>`).join('')}</ul><h3>Մեկ պարզ հա[...]
+	document.querySelector('#topic-image').style.backgroundImage = `url("${content.image}")`;
 	topicModal.classList.add('is-open');
 	topicModal.setAttribute('aria-hidden', 'false');
 	document.body.classList.add('modal-open');
@@ -49,14 +31,11 @@ function closeTopic() {
 	document.body.classList.remove('modal-open');
 }
 
-if (topicCards) {
-	topicCards.forEach(card => {
-		card.addEventListener('click', () => openTopic(card.dataset.topic));
-	});
-}
-
+topicCards.forEach(card => {
+	card.addEventListener('click', () => openTopic(card.dataset.topic));
+});
 topicModal.addEventListener('click', event => {
-	if (event.target.matches('[data-close-modal]') || event.target.matches('.modal-close')) closeTopic();
+	if (event.target.matches('[data-close-modal]')) closeTopic();
 });
 document.addEventListener('keydown', event => {
 	if (event.key === 'Escape' && topicModal.classList.contains('is-open')) closeTopic();
@@ -116,21 +95,20 @@ let footprint = 0;
 let quizStarted = false;
 
 function setQuizProgress(percent) {
-	if (!progressFill) return;
-	progressFill.style.width = `${percent}%`;
+	progressFill.style.width = `${progressFill.parentElement.clientWidth * percent / 100}px`;
 }
 
 const feedbackByQuestion = [
-	'Ջուրը կարևոր ռեսուրս է. մտածիր, թե ինչպես է այն ունեցել նշանակություն հնավայրէրում։',
-	'Սնունդը կապում էր մարդկանց բնության հետ՝ հողագործություն, որս և դաշտային աշխատանքներ։',
-	'Վառելիքը ազդում էր անտառների վրա․ մտածիր՝ ինչ ազդեցություն ունի այսպես օգտագործումը։',
-	'Շինարարությունն ու նյութերի ընտրությունը փոխում էին տեղանքը։',
-	'Վերականգնումը կարող է լինել դանդաղ՝ կախված վնասի չափից։',
-	'Բույսերն ու կենդանիները ապահովում էին սնունդ և նյութեր․ գնահատիր նրանց դերը։',
-	'Ուսումնասիրելիս միշտ պահպանիր վայրի կանոնները՝ չաղտոտել և չվնասել։',
-	'Ուսումնասիրելիս ընտրիր այն քայլերը, որոնք չեն վնասի բույսերին և հողի կառուցվածքին։',
-	'Այսպիսի նախագծերը օգնում են կապել պատմությունը և բնական գիտությունները։',
-	'Սովորելը միայն սկզբն է․ դերակատարն ես դու՝ կիրառիր՝ վերանայելու և պաշտպանելու համար։'
+	'Յուրաքանչյուր ուղևորություն ազդեցություն ունի։ Քայլելը, հեծանիվն ու հանրային տրանսպորտը սովորաբար ամենք�[...]
+	'Տան էներգիայի ընտրությունները գումարվում են։ Վերականգնվող էլեկտրաէներգիան և արդյունավետ ջեռուցումը ժաման[...]
+	'Սնունդը կապում է կլիման, հողն ու ջուրը։ Ավելի շատ բուսական սնունդը ազդեցությունը նվազեցնելու գործնական միջ�[...]
+	'Ավելի քիչ գնելն ու օգտագործված իրեր ընտրելը երկարացնում են նյութերի կյանքը և նվազեցնում նոր ապրանքների արտ�[...]
+	'Ջուր խնայելով՝ խնայում ենք նաև այն մաքրելու, տաքացնելու և տուն հասցնելու էներգիան։',
+	'Նորոգումը, կրկնակի օգտագործումն ու տեսակավորումը կանխում են թափոնները և արժեքավոր նյութերը պահել շրջանառ�[...]
+	'Տեղական և սեզոնային մթերքը կարող է նվազեցնել փոխադրումը, փաթեթավորումն ու հեռավոր էկոհամակարգերի վրա ճնշու[...]
+	'Թռիչքները կարճ ժամանակում մեծ հետք են թողնում։ Գնացք ընտրելը, տեսազանգեր օգտագործելը կամ ավելի քիչ ուղևորո�[...]
+	'Ջերմամեկուսացումն ու արդյունավետ սարքերը տունն ավելի հարմարավետ են դարձնում և նվազեցնում անհրաժեշտ էներգի[...]
+	'Կլիմայի համար գործելը սկսվում է հստակ հաջորդ քայլից։ Իրատեսական ծրագիրն ավելի օգտակար է, քան կատարյալ խոստո[...]
 ];
 
 function selectAnswer() {
@@ -143,6 +121,58 @@ function selectAnswer() {
 }
 
 questions.forEach(question => question.addEventListener('change', selectAnswer));
+
+document.querySelectorAll('.mini-quiz').forEach(quiz => {
+	const result = quiz.querySelector('.mini-result');
+	const miniQuestions = [...quiz.querySelectorAll('.mini-question')];
+	const next = quiz.querySelector('.mini-next');
+	const progress = quiz.querySelector('.mini-progress span');
+	let miniIndex = 0;
+	let miniScore = 0;
+	let answered = false;
+	let miniComplete = false;
+	const showMiniQuestion = () => {
+		miniQuestions.forEach((question, index) => question.classList.toggle('active-mini-question', index === miniIndex));
+		progress.style.width = `${(miniIndex / miniQuestions.length) * 100}%`;
+		next.disabled = true;
+		next.innerHTML = 'Ընտրիր պատասխանը <span>→</span>';
+		answered = false;
+	};
+	quiz.querySelectorAll('[data-answer]').forEach(option => option.addEventListener('click', () => {
+		if (answered) return;
+		answered = true;
+		const isCorrect = option.dataset.answer === 'correct';
+		if (isCorrect) miniScore += 1;
+		quiz.querySelectorAll('.mini-question.active-mini-question [data-answer]').forEach(button => button.classList.remove('correct-answer', 'wrong-answer'));
+		option.classList.add(isCorrect ? 'correct-answer' : 'wrong-answer');
+		result.textContent = isCorrect ? 'Ճիշտ է։ Բացատրիր ընկերոջդ, թե ինչու է այս լուծումն օգտակար։' : 'Ոչ այնքան։ Կրկին կարդա տարբ�[...]
+		next.disabled = false;
+		next.innerHTML = miniIndex === miniQuestions.length - 1 ? 'Տեսնել միավորները <span>→</span>' : 'Հաջորդ հարցը <span>→</span>';
+	}));
+	next.addEventListener('click', () => {
+		if (!answered) return;
+		if (miniComplete) return;
+		if (miniIndex < miniQuestions.length - 1) {
+			miniIndex += 1;
+			result.textContent = '';
+			showMiniQuestion();
+			return;
+		}
+		progress.style.width = '100%';
+		result.textContent = `Քո միավորն է՝ ${miniScore} / ${miniQuestions.length}։ ${miniScore === miniQuestions.length ? 'Հիանալի աշխատանք։' : 'Միասին վերանայ[...]
+		miniComplete = true;
+		next.textContent = 'Փորձել կրկին';
+		next.onclick = () => {
+			miniIndex = 0;
+			miniScore = 0;
+			miniComplete = false;
+			next.onclick = null;
+			result.textContent = '';
+			showMiniQuestion();
+		};
+	});
+	showMiniQuestion();
+});
 
 startQuizButton.addEventListener('click', () => {
 	quizStarted = true;
@@ -173,12 +203,12 @@ nextButton.addEventListener('click', () => {
 	} else {
 		setQuizProgress(100);
 		resultValue.textContent = footprint.toFixed(1);
-		resultMessage.textContent = footprint <= 20 ? 'Թեստը ցույց է տալիս, որ անցած համայնքները համեմատաբար քիչ ազդեցություն են ունեցել.' : footprint <= 35 ? 'Միջին ազդեցություն՝ կան նշաններ, որտեղ պետք է զգույշ լինել.' : 'Բարձր ազդեցություն՝ կարիք կա վերականգնման և նոր մոտեցումների.';
-		resultTip.textContent = footprint > 35 ? 'Ելք՝ քննարկել, թե ինչ հնավայրերի մոտ կարելի է սկսել վերականգնումը։' : 'Կողմնորոշող քայլ՝ դասարանում պատրաստել առաջարկներ պահպանման համար։';
+		resultMessage.textContent = footprint <= 15 ? 'Հիանալի է։ Քո առօրյան արդեն ցածր ածխածնային հիմք ունի։' : footprint <= 25 ? 'Լավ սկիզբ է։ Կա�[...]
+		resultTip.textContent = footprint > 25 ? 'Քննարկում դասարանում․ ո՞ր մեկ փոփոխությունը կարող է այս ամիս ամենից շատ նվազեցնել մ�[...]
 		nextButton.textContent = 'Սկսել նորից';
 		nextButton.disabled = false;
 		quizFeedback.className = 'quiz-feedback visible success';
-		quizFeedback.textContent = 'Թեստն ավարտված է։ Քննարկեք արդյունքները դասարանում։';
+		quizFeedback.textContent = 'Թեստն ավարտված է։ Համեմատիր արդյունքդ դասընկերոջդ հետ և քննարկեք մեկ իրագործելի հաջորդ քայլ[...]
 		nextButton.onclick = resetCalculator;
 	}
 });
@@ -188,6 +218,7 @@ function resetCalculator() {
 	footprint = 0;
 	document.querySelector('#footprint-form').reset();
 	questions.forEach((question, index) => question.classList.toggle('active-question', index === 0));
+	questions.forEach(question => question.classList.remove('active-question'));
 	quizIntro.classList.remove('quiz-hidden');
 	setQuizProgress(0);
 	nextButton.innerHTML = 'Ընտրիր պատասխանը <span>→</span>';
@@ -195,26 +226,23 @@ function resetCalculator() {
 	nextButton.onclick = null;
 	resultValue.textContent = '—';
 	resultMessage.textContent = 'Ավարտիր թեստը՝ գնահատականը տեսնելու համար։';
-	resultTip.textContent = 'Արդյունքները պահվում են միայն այս դիտարկիչում։';
+	resultTip.textContent = 'Քո պատասխանները մնում են այս դիտարկիչում։ Օգտագործիր արդյունքը՝ քննարկում սկսելու համար։';
 	quizFeedback.className = 'quiz-feedback';
 	quizFeedback.textContent = '';
 	quizStarted = false;
 }
 
-const signup = document.querySelector('#signup-form');
-if (signup) {
-	signup.addEventListener('submit', event => {
-		event.preventDefault();
-		const form = event.currentTarget;
-		const status = document.querySelector('#form-status');
-		if (!form.checkValidity()) {
-			status.className = 'form-status error';
-			status.textContent = 'Լրացրու անունդ և էլեկտրոնային փոստը, ինչպես նաև տուր համաձայնությունդ։';
-			form.reportValidity();
-			return;
-		}
-		status.className = 'form-status success';
-		status.textContent = 'Դու գրանցված ես։ Շնորհակալություն։';
-		form.reset();
-	});
-}
+document.querySelector('#signup-form').addEventListener('submit', event => {
+	event.preventDefault();
+	const form = event.currentTarget;
+	const status = document.querySelector('#form-status');
+	if (!form.checkValidity()) {
+		status.className = 'form-status error';
+		status.textContent = 'Լրացրու անունդ և էլեկտրոնային փոստը, ինչպես նաև տուր համաձայնությունդ։';
+		form.reportValidity();
+		return;
+	}
+	status.className = 'form-status success';
+	status.textContent = 'Դու գրանցված ես։ Բարի գալուստ մեր նախաձեռնություն։';
+	form.reset();
+});
