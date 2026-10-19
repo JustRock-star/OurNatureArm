@@ -5,9 +5,27 @@ const mainNav = document.querySelector('.main-nav');
 const topicModal = document.querySelector('#topic-modal');
 const topicCards = document.querySelectorAll('.issue-card');
 const topicContent = {
-	climate: { number: '01 / ԿԼԻՄԱ', title: 'Հովացնենք մոլորակը', description: 'Կլիմայի փոփոխության վրա ազդում են միլիոնավոր առօրյա որոշումներ՝ մեր օգտագործած էներգիայից մինչև տեղաշարժվելու և սնվելու ձևը։', detail: 'Ինչո՞ւ է սա կարևոր', body: 'Տաքացող կլիման բերում է ուժեղ շոգի, տեղումների փոփոխության և ավելի մեծ ճնշման սննդի, ջրի ու բնակարանների վրա։ Մաքուր էներգիան, արդյունավետ շենքերն ու մտածված առօրյա ընտրությունները կարող են փոխել իրավիճակը դեպի լավը։', facts: ['Մաքուր էներգիան նվազեցնում է աղտոտումը հենց սկզբնաղբյուրում։', 'Քայլելը, հեծանիվը, հանրային տրանսպորտն ու համատեղ ուղևորությունները նվազեցնում են արտանետումները։', 'Ցածր ածխածնային ընտրությունները մեծ ուժ են ստանում, երբ համայնքներն անում են դրանք միասին։'], action: 'Սկսիր մի փոփոխությունից, որը կարող ես շարունակաբար անել․ ընտրիր մեքենայից զերծ ուղևորություն, անջատիր չօգտագործվող սարքերը կամ ծրագրիր մեկ ավելի կայուն սննդակարգով ճաշ։', image: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1000&q=85' },
-	forest: { number: '02 / ԱՆՏԱՌՆԵՐ', title: 'Պահպանենք անտառները', description: 'Անտառները պաշտպանում են կենսաբազմազանությունը, կուտակում ածխածինն ու աջակցում այն համայնքներին, որոնց կյանքն անքակտելիորեն կապված է ծառերի հետ։', detail: 'Ինչո՞ւ է սա կարևոր', body: 'Անտառները կենդանի ենթակառուցվածք են․ զովացնում են բնաշխարհները, պահպանում հողը, մաքրում ջուրն ու հազարավոր տեսակների ապաստան տալիս։ Դրանց պաշտպանությունը նաև պաշտպանում է մարդկանց ու մշակույթները, որոնք սերունդներ շարունակ հոգ են տարել անտառների մասին։', facts: ['Անտառներում են ապրում ցամաքային տեսակների մեծ մասը։', 'Առողջ անտառներն օգնում են կարգավորել ջրային պաշարներն ու տեղական ջերմաստիճանը։', 'Վերականգնումն առավել արդյունավետ է, երբ դրան առաջնորդում են տեղական համայնքները։'], action: 'Գնիր ավելի քիչ և ընտրիր երկարակյաց, հավաստագրված ապրանքներ։ Աջակցիր վերականգնման ծրագրերին, որոնք պաշտպանում են տեղական տեսակներն ու հարգում անտառամերձ համայնքներին։', image: 'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1000&q=85' },
-	ocean: { number: '03 / ՕՎԿԻԱՆՈՍՆԵՐ', title: 'Տեղ թողնենք օվկիանոսներին', description: 'Օվկիանոսը կարգավորում է կլիման և սնունդ տալիս միլիարդավոր մարդկանց։ Դրա վերականգնումը կախված է նրանից, թե որքանով կթուլացնենք ճնշումը։', detail: 'Ինչո՞ւ է սա կարևոր', body: 'Օվկիանոսը կլիմայի դաշնակից է, սննդի աղբյուր և կյանքի փոխկապակցված ցանց։ Պլաստիկը, ջրի տաքացումը, չափից ավելի որսն ու աղտոտված գետերը մեծացնում են ճնշումը, բայց ցամաքում ավելի առողջ ընտրությունները կարող են օգնել ծովին վերականգնվել։', facts: ['Օվկիանոսը կլանում է կլիմայի փոփոխության հետևանքով առաջացած ավելորդ ջերմության մեծ մասը։', 'Գետերը ցամաքից թափոններն ու աղտոտիչները հասցնում են ափեր։', 'Պահպանվող ծովային տարածքները էկոհամակարգերին վերականգնվելու հնարավորություն են տալիս։'], action: 'Ավելի քիչ թափոն ստեղծիր, ընտրությունդ արա մտածված և մաքուր պահիր փողոցներն ու գետերը։ Ջրահեռացման համակարգ չհասած յուրաքանչյուր աղբի կտոր ավելի քիչ հավանականություն ունի հայտնվելու ծովում։', image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1000&q=85' }
+	climate: {
+		number: '01 / ԿԼԻՄԱ',
+		title: 'Կլիմա և հնավայրեր',
+		description: 'Կլիմայական պայմանները ազդել են այնպիսի գործունեությունների վրա, ինչպիսիք են հողագործությունն ու բնակության տեղորոշումը։',
+		detail: 'Ինչպես ��ործել',
+		body: 'Կլիման ձևավորել է մարդկանց որոշումները՝ բնակություն ընտրելու, crops աճեցնելու և ջրային համակարգեր ստեղծելու առումով։'
+	},
+	forest: {
+		number: '02 / ԱՆՏԱՌՆԵՐ',
+		title: 'Ինչպես օգտագործել անտառները',
+		description: 'Անտառները էին տրամադրում վառելիք, շինանյութ և սնունդ՝ հատկապես փոքր համայնքներում։',
+		detail: 'Պահպանության օրինակներ',
+		body: 'Հայտնի է, որ տեղական բնակչություններն օգտագործել են անտառային ռեսուրսները, բայց երբեմն՝ ավելորդ հատումների պատճառով կարող էին փոխել տեղանքը։'
+	},
+	ocean: {
+		number: '03 / ՋՐԱՏԱՐԱԾՔՆԵՐ',
+		title: 'Ջուրն ու հնավայրերը',
+		description: 'Գետերը և լճերը հաճախ որոշում են, որտեղ են հիմք առնում settlements-ները։',
+		detail: 'Ջրի ճիշտ կառավարման քայլեր',
+		body: 'Ջրի մոտ գտնվող հնավայրերը ունեն հարուստ պատմական ապրելակարգ՝ մոտակա ջրի օգտագործմամբ։'
+	}
 };
 
 function openTopic(topic) {
@@ -17,8 +35,8 @@ function openTopic(topic) {
 	document.querySelector('#topic-title').textContent = content.title;
 	document.querySelector('#topic-description').textContent = content.description;
 	document.querySelector('#topic-detail').innerHTML = `<strong>${content.detail}</strong><p>${content.body}</p>`;
-	document.querySelector('#topic-sections').innerHTML = `<h3>Ուշադրության կենտրոնում</h3><ul>${content.facts.map(fact => `<li>${fact}</li>`).join('')}</ul><h3>Մեկ պարզ հաջորդ քայլ</h3><p>${content.action}</p>`;
-	document.querySelector('#topic-image').style.backgroundImage = `url("${content.image}")`;
+	document.querySelector('#topic-sections').innerHTML = `<h3>Ուշադրության կենտրոնում</h3><ul><li>Պատմական և բնապահպանական կապ</li><li>Պահպանման պարզ քայլեր</li></ul>`;
+	document.querySelector('#topic-image').style.backgroundImage = `url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80")`;
 	topicModal.classList.add('is-open');
 	topicModal.setAttribute('aria-hidden', 'false');
 	document.body.classList.add('modal-open');
@@ -31,11 +49,14 @@ function closeTopic() {
 	document.body.classList.remove('modal-open');
 }
 
-topicCards.forEach(card => {
-	card.addEventListener('click', () => openTopic(card.dataset.topic));
-});
+if (topicCards) {
+	topicCards.forEach(card => {
+		card.addEventListener('click', () => openTopic(card.dataset.topic));
+	});
+}
+
 topicModal.addEventListener('click', event => {
-	if (event.target.matches('[data-close-modal]')) closeTopic();
+	if (event.target.matches('[data-close-modal]') || event.target.matches('.modal-close')) closeTopic();
 });
 document.addEventListener('keydown', event => {
 	if (event.key === 'Escape' && topicModal.classList.contains('is-open')) closeTopic();
@@ -95,20 +116,21 @@ let footprint = 0;
 let quizStarted = false;
 
 function setQuizProgress(percent) {
-	progressFill.style.width = `${progressFill.parentElement.clientWidth * percent / 100}px`;
+	if (!progressFill) return;
+	progressFill.style.width = `${percent}%`;
 }
 
 const feedbackByQuestion = [
-	'Յուրաքանչյուր ուղևորություն ազդեցություն ունի։ Քայլելը, հեծանիվն ու հանրային տրանսպորտը սովորաբար ամենաքիչ հետքն են թողնում։',
-	'Տան էներգիայի ընտրությունները գումարվում են։ Վերականգնվող էլեկտրաէներգիան և արդյունավետ ջեռուցումը ժամանակի ընթացքում նվազեցնում են արտանետումները։',
-	'Սնունդը կապում է կլիման, հողն ու ջուրը։ Ավելի շատ բուսական սնունդը ազդեցությունը նվազեցնելու գործնական միջոց է։',
-	'Ավելի քիչ գնելն ու օգտագործված իրեր ընտրելը երկարացնում են նյութերի կյանքը և նվազեցնում նոր ապրանքների արտադրության էներգածախսը։',
-	'Ջուր խնայելով՝ խնայում ենք նաև այն մաքրելու, տաքացնելու և տուն հասցնելու էներգիան։',
-	'Նորոգումը, կրկնակի օգտագործումն ու տեսակավորումը կանխում են թափոնները և արժեքավոր նյութերը պահում շրջանառության մեջ։',
-	'Տեղական և սեզոնային մթերքը կարող է նվազեցնել փոխադրումը, փաթեթավորումն ու հեռավոր էկոհամակարգերի վրա ճնշումը։',
-	'Թռիչքները կարճ ժամանակում մեծ հետք են թողնում։ Գնացք ընտրելը, տեսազանգեր օգտագործելը կամ ավելի քիչ ուղևորություններ կատարելը կարող է մեծ տարբերություն ստեղծել։',
-	'Ջերմամեկուսացումն ու արդյունավետ սարքերը տունն ավելի հարմարավետ են դարձնում և նվազեցնում անհրաժեշտ էներգիան։',
-	'Կլիմայի համար գործելը սկսվում է հստակ հաջորդ քայլից։ Իրատեսական ծրագիրն ավելի օգտակար է, քան կատարյալ խոստումը։'
+	'Ջուրը կարևոր ռեսուրս է. մտածիր, թե ինչպես է այն ունեցել նշանակություն հնավայրէրում։',
+	'Սնունդը կապում էր մարդկանց բնության հետ՝ հողագործություն, որս և դաշտային աշխատանքներ։',
+	'Վառելիքը ազդում էր անտառների վրա․ մտածիր՝ ինչ ազդեցություն ունի այսպես օգտագործումը։',
+	'Շինարարությունն ու նյութերի ընտրությունը փոխում էին տեղանքը։',
+	'Վերականգնումը կարող է լինել դանդաղ՝ կախված վնասի չափից։',
+	'Բույսերն ու կենդանիները ապահովում էին սնունդ և նյութեր․ գնահատիր նրանց դերը։',
+	'Ուսումնասիրելիս միշտ պահպանիր վայրի կանոնները՝ չաղտոտել և չվնասել։',
+	'Ուսումնասիրելիս ընտրիր այն քայլերը, որոնք չեն վնասի բույսերին և հողի կառուցվածքին։',
+	'Այսպիսի նախագծերը օգնում են կապել պատմությունը և բնական գիտությունները։',
+	'Սովորելը միայն սկզբն է․ դերակատարն ես դու՝ կիրառիր՝ վերանայելու և պաշտպանելու համար։'
 ];
 
 function selectAnswer() {
@@ -121,58 +143,6 @@ function selectAnswer() {
 }
 
 questions.forEach(question => question.addEventListener('change', selectAnswer));
-
-document.querySelectorAll('.mini-quiz').forEach(quiz => {
-	const result = quiz.querySelector('.mini-result');
-	const miniQuestions = [...quiz.querySelectorAll('.mini-question')];
-	const next = quiz.querySelector('.mini-next');
-	const progress = quiz.querySelector('.mini-progress span');
-	let miniIndex = 0;
-	let miniScore = 0;
-	let answered = false;
-	let miniComplete = false;
-	const showMiniQuestion = () => {
-		miniQuestions.forEach((question, index) => question.classList.toggle('active-mini-question', index === miniIndex));
-		progress.style.width = `${(miniIndex / miniQuestions.length) * 100}%`;
-		next.disabled = true;
-		next.innerHTML = 'Ընտրիր պատասխանը <span>→</span>';
-		answered = false;
-	};
-	quiz.querySelectorAll('[data-answer]').forEach(option => option.addEventListener('click', () => {
-		if (answered) return;
-		answered = true;
-		const isCorrect = option.dataset.answer === 'correct';
-		if (isCorrect) miniScore += 1;
-		quiz.querySelectorAll('.mini-question.active-mini-question [data-answer]').forEach(button => button.classList.remove('correct-answer', 'wrong-answer'));
-		option.classList.add(isCorrect ? 'correct-answer' : 'wrong-answer');
-		result.textContent = isCorrect ? 'Ճիշտ է։ Բացատրիր ընկերոջդ, թե ինչու է այս լուծումն օգտակար։' : 'Ոչ այնքան։ Կրկին կարդա տարբերակները և քննարկիր ամենաարդյունավետը։';
-		next.disabled = false;
-		next.innerHTML = miniIndex === miniQuestions.length - 1 ? 'Տեսնել միավորները <span>→</span>' : 'Հաջորդ հարցը <span>→</span>';
-	}));
-	next.addEventListener('click', () => {
-		if (!answered) return;
-		if (miniComplete) return;
-		if (miniIndex < miniQuestions.length - 1) {
-			miniIndex += 1;
-			result.textContent = '';
-			showMiniQuestion();
-			return;
-		}
-		progress.style.width = '100%';
-		result.textContent = `Քո միավորն է՝ ${miniScore} / ${miniQuestions.length}։ ${miniScore === miniQuestions.length ? 'Հիանալի աշխատանք։' : 'Միասին վերանայեք պատասխաններն ու կրկին փորձեք։'}`;
-		miniComplete = true;
-		next.textContent = 'Փորձել կրկին';
-		next.onclick = () => {
-			miniIndex = 0;
-			miniScore = 0;
-			miniComplete = false;
-			next.onclick = null;
-			result.textContent = '';
-			showMiniQuestion();
-		};
-	});
-	showMiniQuestion();
-});
 
 startQuizButton.addEventListener('click', () => {
 	quizStarted = true;
@@ -203,12 +173,12 @@ nextButton.addEventListener('click', () => {
 	} else {
 		setQuizProgress(100);
 		resultValue.textContent = footprint.toFixed(1);
-		resultMessage.textContent = footprint <= 15 ? 'Հիանալի է։ Քո առօրյան արդեն ցածր ածխածնային հիմք ունի։' : footprint <= 25 ? 'Լավ սկիզբ է։ Կան բարելավման հստակ հնարավորություններ։' : 'Փոքր փոփոխություններն էլ կարող են կարևոր ազդեցություն ունենալ։';
-		resultTip.textContent = footprint > 25 ? 'Քննարկում դասարանում․ ո՞ր մեկ փոփոխությունը կարող է այս ամիս ամենից շատ նվազեցնել միավորը։' : 'Քննարկում դասարանում․ ո՞ր պատասխանն էր ամենահեշտը փոխել և ինչո՞ւ։';
+		resultMessage.textContent = footprint <= 20 ? 'Թեստը ցույց է տալիս, որ անցած համայնքները համեմատաբար քիչ ազդեցություն են ունեցել.' : footprint <= 35 ? 'Միջին ազդեցություն՝ կան նշաններ, որտեղ պետք է զգույշ լինել.' : 'Բարձր ազդեցություն՝ կարիք կա վերականգնման և նոր մոտեցումների.';
+		resultTip.textContent = footprint > 35 ? 'Ելք՝ քննարկել, թե ինչ հնավայրերի մոտ կարելի է սկսել վերականգնումը։' : 'Կողմնորոշող քայլ՝ դասարանում պատրաստել առաջարկներ պահպանման համար։';
 		nextButton.textContent = 'Սկսել նորից';
 		nextButton.disabled = false;
 		quizFeedback.className = 'quiz-feedback visible success';
-		quizFeedback.textContent = 'Թեստն ավարտված է։ Համեմատիր արդյունքդ դասընկերոջդ հետ և քննարկեք մեկ իրագործելի հաջորդ քայլ։';
+		quizFeedback.textContent = 'Թեստն ավարտված է։ Քննարկեք արդյունքները դասարանում։';
 		nextButton.onclick = resetCalculator;
 	}
 });
@@ -218,7 +188,6 @@ function resetCalculator() {
 	footprint = 0;
 	document.querySelector('#footprint-form').reset();
 	questions.forEach((question, index) => question.classList.toggle('active-question', index === 0));
-	questions.forEach(question => question.classList.remove('active-question'));
 	quizIntro.classList.remove('quiz-hidden');
 	setQuizProgress(0);
 	nextButton.innerHTML = 'Ընտրիր պատասխանը <span>→</span>';
@@ -226,23 +195,26 @@ function resetCalculator() {
 	nextButton.onclick = null;
 	resultValue.textContent = '—';
 	resultMessage.textContent = 'Ավարտիր թեստը՝ գնահատականը տեսնելու համար։';
-	resultTip.textContent = 'Քո պատասխանները մնում են այս դիտարկիչում։ Օգտագործիր արդյունքը՝ քննարկում սկսելու համար։';
+	resultTip.textContent = 'Արդյունքները պահվում են միայն այս դիտարկիչում։';
 	quizFeedback.className = 'quiz-feedback';
 	quizFeedback.textContent = '';
 	quizStarted = false;
 }
 
-document.querySelector('#signup-form').addEventListener('submit', event => {
-	event.preventDefault();
-	const form = event.currentTarget;
-	const status = document.querySelector('#form-status');
-	if (!form.checkValidity()) {
-		status.className = 'form-status error';
-		status.textContent = 'Լրացրու անունդ և էլեկտրոնային փոստը, ինչպես նաև տուր համաձայնությունդ։';
-		form.reportValidity();
-		return;
-	}
-	status.className = 'form-status success';
-	status.textContent = 'Դու գրանցված ես։ Բարի գալուստ մեր նախաձեռնություն։';
-	form.reset();
-});
+const signup = document.querySelector('#signup-form');
+if (signup) {
+	signup.addEventListener('submit', event => {
+		event.preventDefault();
+		const form = event.currentTarget;
+		const status = document.querySelector('#form-status');
+		if (!form.checkValidity()) {
+			status.className = 'form-status error';
+			status.textContent = 'Լրացրու անունդ և էլեկտրոնային փոստը, ինչպես նաև տուր համաձայնությունդ։';
+			form.reportValidity();
+			return;
+		}
+		status.className = 'form-status success';
+		status.textContent = 'Դու գրանցված ես։ Շնորհակալություն։';
+		form.reset();
+	});
+}
